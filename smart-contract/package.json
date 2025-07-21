@@ -1,0 +1,17 @@
+{
+  "name": "capstone-project",
+  "scripts": {
+    "deploy" : "npx hardhat ignition deploy ignition/modules/Voting.ts --network sepolia",
+    "verify" : "hardhat verify --network sepolia",
+    "vote" : "npx hardhat run scripts/vote.ts --network sepolia"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.13",
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.0",
+    "@openzeppelin/contracts": "^5.4.0",
+    "dotenv": "^17.2.0",
+    "hardhat": "^2.26.0",
+    "hardhat-deploy": "^1.0.4"
+  }
+}
