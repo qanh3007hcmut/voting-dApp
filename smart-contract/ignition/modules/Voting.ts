@@ -7,11 +7,11 @@ const VotingModule = buildModule("VotingModule", (m) => {
   // Import VotingToken from its module
   const { votingToken } = m.useModule(VotingTokenModule);
   
-  // Set voting duration to 7 days (in seconds)
-  const votingDuration = 7 * 24 * 60 * 60; // 7 days in seconds
-  
+  const start = Math.floor(Date.now() / 1000);
+  const end = start + 7 * 24 * 60 * 60; // 7 days in seconds
+
   // Deploy Voting with VotingToken address and duration
-  const voting = m.contract("Voting", [votingToken, votingDuration], { from: deployer });
+  const voting = m.contract("Voting", [votingToken, start, end], { from: deployer });
 
   return { voting, votingToken };
 });

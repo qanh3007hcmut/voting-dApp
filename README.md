@@ -1,7 +1,7 @@
 # Voting Smart Contract – Sepolia Testnet
 
 **Địa chỉ triển khai:**  
-🔗 [0xF7de17641f1C02Fcb2D9F92e70B1205d354B5EA3 (Sepolia Etherscan)](https://sepolia.etherscan.io/address/0xF7de17641f1C02Fcb2D9F92e70B1205d354B5EA3)
+🔗 [0x3227672425b82d59655fFCcc95626601A3b1d35a (Sepolia Etherscan)](https://sepolia.etherscan.io/address/0x3227672425b82d59655fFCcc95626601A3b1d35a)
 
 ---
 
@@ -30,9 +30,6 @@ Các tính năng chính:
 |---------------------------|----------------------------------------------------------------------|------------------|
 | `addCandidate(string)`    | Chủ sở hữu thêm ứng cử viên vào danh sách tranh cử                  | Chỉ `owner`      |
 | `vote(uint)`              | Bỏ phiếu cho ứng viên theo ID, sức mạnh phiếu dựa vào số token sở hữu | Bất kỳ (trong thời gian bỏ phiếu) |
-| `viewCandidateList()`     | Trả về danh sách đầy đủ các ứng cử viên hiện có                      | Bất kỳ           |
-| `showMostVotedCandidate()`| Trả về ứng cử viên đang dẫn đầu về số phiếu                         | Bất kỳ           |
-| `getPowerVote()`          | Tính toán sức mạnh phiếu bầu dựa trên số lượng token                   | Bất kỳ           |
 
 ### VotingToken (ERC20)
 
@@ -64,11 +61,48 @@ Các tính năng chính:
 
 ### Sự kiện và miêu bạch
 
-- **Sự kiện**: Mỗi lần bỏ phiếu sẽ phát sự kiện `VotedEvent(candidateId, voter, powerVote)` để theo dõi lịch sử on-chain.
+- **Sự kiện**: Mỗi lần bỏ phiếu sẽ phát sự kiện `Vote(candidateId, voter, powerVote)` để theo dõi lịch sử on-chain.
+
+---
+
+## 4. Hướng dẫn sử dụng
+
+### Các lệnh cơ bản
+
+```bash
+# Cài đặt dependencies
+npm install
+
+# Chạy tests
+npm run test
+
+# Triển khai hợp đồng lên Sepolia testnet
+npm run deploy
+
+# Xem báo cáo kết quả bỏ phiếu
+npm run report
+```
+
+### Scripts
+
+| Script | Mô tả |
+|--------|-------|
+| `deploy` | Triển khai cả VotingToken và Voting contract lên Sepolia |
+| `test` | Chạy các test tự động |
+| `report` | Hiển thị báo cáo kết quả bỏ phiếu từ các sự kiện on-chain |
+
+### Báo cáo kết quả
+
+Script `report.ts` sẽ đọc các sự kiện `AddCandidate` và `Vote` từ blockchain để hiển thị:
+
+- Danh sách ứng cử viên
+- Số phiếu của từng ứng viên
+- Tổng số người bỏ phiếu
+- Ứng viên dẫn đầu
 
 ---
 
 **Bạn có thể kiểm tra và tương tác tại:**  
-📎 [Voting Contract trên Sepolia Etherscan](https://sepolia.etherscan.io/address/0xF7de17641f1C02Fcb2D9F92e70B1205d354B5EA3)
+📎 [Voting Contract trên Sepolia Etherscan](https://sepolia.etherscan.io/address/0x3227672425b82d59655fFCcc95626601A3b1d35a)
 
 ---

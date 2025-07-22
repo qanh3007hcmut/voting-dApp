@@ -4,8 +4,9 @@
     "deploy": "npx hardhat ignition deploy ignition/modules/Voting.ts --network sepolia",
     "test": "npx hardhat test",
     "clear": "npx hardhat ignition clear --network sepolia",
-    "verify": "hardhat verify --network sepolia",
-    "vote": "npx hardhat run scripts/vote.ts --network sepolia"
+    "verify": "npx hardhat run scripts/verify.ts --network sepolia",
+    "vote": "npx hardhat run scripts/vote.ts --network sepolia",
+    "report": "npx hardhat run scripts/report.ts --network sepolia"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-ignition": "^0.15.13",
