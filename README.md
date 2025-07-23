@@ -1,7 +1,7 @@
 # Voting Smart Contract – Sepolia Testnet
 
 **Địa chỉ triển khai:**  
-🔗 [0x3227672425b82d59655fFCcc95626601A3b1d35a (Sepolia Etherscan)](https://sepolia.etherscan.io/address/0x3227672425b82d59655fFCcc95626601A3b1d35a)
+🔗 [0x561A6748415c13E73604374D73DfB3dbcC508a78 (Sepolia Etherscan)](https://sepolia.etherscan.io/address/0x561A6748415c13E73604374D73DfB3dbcC508a78)
 
 ---
 
@@ -103,6 +103,6 @@ Script `report.ts` sẽ đọc các sự kiện `AddCandidate` và `Vote` từ b
 ---
 
 **Bạn có thể kiểm tra và tương tác tại:**  
-📎 [Voting Contract trên Sepolia Etherscan](https://sepolia.etherscan.io/address/0x3227672425b82d59655fFCcc95626601A3b1d35a)
+📎 [Voting Contract trên Sepolia Etherscan](https://sepolia.etherscan.io/address/0x561A6748415c13E73604374D73DfB3dbcC508a78)
 
 ---

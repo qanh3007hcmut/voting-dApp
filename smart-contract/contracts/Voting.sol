@@ -9,18 +9,18 @@ contract Voting {
     uint256 public votingStart;
     uint256 public votingEnd;
     address public owner;
-    uint public candidatesCount;
+    uint256 public candidatesCount;
     IERC20 public votingToken;
 
-    mapping(address => bool) private voted;
+    mapping(address => uint256) private voted;
 
     event Vote(
-        uint indexed candidateId,
+        uint256 indexed candidateId,
         address indexed voter,
-        uint8 powerVote
+        uint256 powerVote
     );
 
-    event AddCandidate(uint indexed candidateId, string name);
+    event AddCandidate(uint256 indexed candidateId, string name);
 
     constructor(address TokenAddress, uint256 start, uint256 end) {
         require(TokenAddress != address(0), "Invalid token address");
@@ -36,7 +36,7 @@ contract Voting {
     }
 
     modifier validVoter() {
-        require(!voted[msg.sender], "You have already voted");
+        require(voted[msg.sender] > 0, "You have already voted");
         _;
     }
 
@@ -46,11 +46,11 @@ contract Voting {
         _;
     }
 
-    function setTimeStart(uint start) external onlyOwner {
+    function setTimeStart(uint256 start) external onlyOwner {
         votingStart = start;
     }
 
-    function setTimeEnd(uint end) external onlyOwner {
+    function setTimeEnd(uint256 end) external onlyOwner {
         votingEnd = end;
     }
 
@@ -59,16 +59,17 @@ contract Voting {
         emit AddCandidate(candidatesCount, _name);
     }
 
-    function vote(uint _candidateId) external validVoter votingOpen {
+    function vote(uint256 _candidateId) external validVoter votingOpen {
         require(
             _candidateId > 0 && _candidateId <= candidatesCount,
             "Invalid candidate"
         );
-        voted[msg.sender] = true;
-        emit Vote(_candidateId, msg.sender, getPowerVote());
+        uint256 power = getPowerVote();
+        voted[msg.sender] = power;
+        emit Vote(_candidateId, msg.sender, power);
     }
 
-    function getPowerVote() internal view returns (uint8) {
+    function getPowerVote() internal view returns (uint256) {
         uint256 balance = votingToken.balanceOf(msg.sender);
         if (balance < 1000 * 10 ** 18) {
             return 1;
